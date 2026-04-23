@@ -22,18 +22,25 @@ const PORT = process.env.PORT || 3000;
 const MONGO_URL = process.env.MONGO_URL;
 
 
-mongoose.connect(MONGO_URL);
+mongoose.connect(MONGO_URL).catch((error) => {
+    console.error("MongoDB connection error:", error.message);
+    process.exit(1);
+});
 
 const connection = mongoose.connection;
 
 connection.once('open', () =>{
-    console.log(`Mongodb connect successfully`);
+    console.log(`MongoDB connected successfully`);
     
+});
+
+connection.on('error', (error) => {
+    console.error("MongoDB error:", error.message);
 });
 
 app.use("/api/v1/users" , userRoutes);
 
 app.listen(PORT, () => {
-    console.log(`Servet is rumming on port ${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
     
 });
