@@ -4,8 +4,8 @@ import { createUser, deleteUser, findUser, updateUser } from "../controller/User
 const userRoutes =  express.Router();
 
 userRoutes.post("/create" , createUser);
-userRoutes.get("/find" , findUser);
-userRoutes.delete("/delete" , deleteUser);
-userRoutes.put("/update" , updateUser);
+userRoutes.get("/find/:email" , findUser);
+userRoutes.delete("/delete/:email" , deleteUser);
+userRoutes.put("/update/:email" , updateUser);
 
 export default userRoutes;

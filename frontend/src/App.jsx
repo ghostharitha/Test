@@ -1,12 +1,10 @@
-import User from "./components/User"
-import dotenv from 'dotenv'
+import UserForm from "./components/User"
 
 function App() {
- 
 
   return (
     <>
-     <User/>
+     <UserForm/>
     </>
   )
 }
