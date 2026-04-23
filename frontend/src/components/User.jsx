@@ -37,8 +37,9 @@ const UserForm = () => {
         });
 
     } catch (error) {
-      console.error(error);
-      alert("Error creating user");
+      console.error("Full error:", error);
+      const errorMessage = error.response?.data?.error || error.message || "Error creating user";
+      alert(`Error: ${errorMessage}`);
     }
   };
 

@@ -8,7 +8,8 @@ export function createUser(req, res) {
     newUser.save().then(() => {
         res.json({ message: "User created successfully" });
     }).catch((error) => {
-        res.status(500).json({ error: "User created failed..." })
+        console.error("Error creating user:", error.message);
+        res.status(500).json({ error: error.message || "User creation failed..." })
     });
 
 }
